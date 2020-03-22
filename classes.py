@@ -45,6 +45,29 @@ class Camera():
 		if key[pygame.K_n]:		self.rot_yz -= 1
 
 class Object():
-	def __init__(self, verts, edges):
+	def __init__(self, verts, edges, faces = []):
 		self.verts = verts
 		self.edges = edges
+		self.faces = faces
+
+class Sphere():
+	def __init__(self, center, radius):
+		self.center = center
+		self.radius= radius
+		self.rot_xy = 0
+		self.rot_xz = 0
+		self.rot_yz = 0
+
+	def rotate_xy(self, dt, x, y):
+		x2 = x * math.cos(dt * self.rot_xy) - y * math.sin(dt * self.rot_xy)
+		y2 = x * math.sin(dt * self.rot_xy) + y * math.cos(dt * self.rot_xy)
+		return (x2, y2)
+
+	def rotate_xz(self, dt, x, z):
+		x2 = x * math.cos(dt * self.rot_xz) - z * math.sin(dt * self.rot_xz)
+		z2 = x * math.sin(dt * self.rot_xz) + z * math.cos(dt * self.rot_xz)
+		return (x2, z2)
+
+	def rotate_yz(self, dt, y, z):
+		y2 = y * math.cos(dt * self.rot_yz) - z * math.sin(dt * self.rot_yz)
+		z2 = y * math.sin(dt * self.rot_yz) + z * math.cos(dt * self.rot_yz)

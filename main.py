@@ -1,5 +1,5 @@
 import pygame
-from classes import Camera
+from classes import Camera, Object, Sphere
 from function import *
 from pygame.locals import *
 from global_variables import *
@@ -17,10 +17,12 @@ clock = pygame.time.Clock()
 
 "	INIT THE CAMERA (USER's VIEUW) AND SET THE ROTATION		"
 
-camera = Camera((0, 0, 5), (0, 0))
-rad = 0
+camera = Camera((0, 0, 5), (0, 15))
 
 "	MAIN ENGINE		"
+
+cube = Object(cube_verts, cube_edges, cube_faces)
+sphere = Sphere(sphere_center, sphere_radius)
 
 while (ON):
 	dt = clock.tick(60)/1000
@@ -28,7 +30,8 @@ while (ON):
 
 	key = pygame.key.get_pressed()
 	camera.update(0.01, key)
-	# camera.rot_yz += 1
+	camera.rot_xy += 1
+	camera.rot_xz += 1
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -36,12 +39,15 @@ while (ON):
 		elif key[pygame.K_ESCAPE]:
 			ON = False
 
-	draw_shape(cube_edges, cube_verts, camera, screen)
+	draw_shape(cube, camera, screen)
+	# render_sphere(screen, camera, sphere)
 
-	screen.blit(update_fps(clock), (10,0))
+
+	screen.blit(update_fps(clock), (0,0))
+	screen.blit(update_cam_pos(camera), (0, 18))
 	pygame.display.flip()
-	rad += 0.0002
 	
-	print(camera.x, camera.y, camera.z)
+	# print(camera.x, camera.y, camera.z)
 
+draw_faces(cube, camera, screen)
 pygame.quit()
