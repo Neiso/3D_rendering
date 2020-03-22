@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("My first program !")
 clock = pygame.time.Clock()
 
-camera = Camera((0, 0, 0))
+camera = Camera((0, 0, 5))
 rad = 0
 
 while (ON):
@@ -23,11 +23,11 @@ while (ON):
 		elif key[pygame.K_ESCAPE]:
 			ON = False
 
-	for edge in edges:
+	for edge in edges2:
 		points = []
-		for x, y, z in [verts[edge[0]], verts[edge[1]]]:
-			x, y = camera.rotate_xy(rad, x, y)
-			x, z = camera.rotate_xz(rad, x, z)
+		for x, y, z in [verts2[edge[0]], verts2[edge[1]]]:
+			x, y = camera.rotate_xy(0.02, x, y)
+			x, z = camera.rotate_xz(0.02, x, z)
 			x += camera.x
 			y += camera.y
 			z += camera.z
