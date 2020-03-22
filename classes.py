@@ -43,3 +43,8 @@ class Camera():
 
 		if key[pygame.K_b]:		self.rot_yz += 1
 		if key[pygame.K_n]:		self.rot_yz -= 1
+
+class Object():
+	def __init__(self, verts, edges):
+		self.verts = verts
+		self.edges = edges
