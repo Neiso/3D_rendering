@@ -28,12 +28,12 @@ class Camera():
 		return (y2, z2)
 
 	def update(self, dt, key):
-		if key[pygame.K_d]: 	self.x += dt
-		if key[pygame.K_q]:		self.x -= dt
-		if key[pygame.K_z]:		self.y -= dt
-		if key[pygame.K_s]:		self.y += dt
-		if key[pygame.K_a]:		self.z += dt
-		if key[pygame.K_e]:		self.z -= dt
+		if key[pygame.K_d]: 	self.x += dt * 2
+		if key[pygame.K_q]:		self.x -= dt * 2
+		if key[pygame.K_z]:		self.y -= dt * 2
+		if key[pygame.K_s]:		self.y += dt * 2
+		if key[pygame.K_e]:		self.z -= dt * 2
+		if key[pygame.K_a]:		self.z += dt * 2
 
 		if key[pygame.K_o]:		self.rot_xy += 1
 		if key[pygame.K_p]:		self.rot_xy -= 1

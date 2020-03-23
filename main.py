@@ -12,12 +12,12 @@ pygame.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("My first program !")
-pygame.display.toggle_fullscreen()
+# pygame.display.toggle_fullscreen()
 clock = pygame.time.Clock()
 
 "	INIT THE CAMERA (USER's VIEUW) AND SET THE ROTATION		"
 
-camera = Camera((0, 0, 5), (0, 15))
+camera = Camera((0, 0, 5), (0, 0))
 
 "	MAIN ENGINE		"
 
@@ -30,8 +30,8 @@ while (ON):
 
 	key = pygame.key.get_pressed()
 	camera.update(0.01, key)
-	camera.rot_xy += 1
-	camera.rot_xz += 1
+	# camera.rot_xy += 1
+	# camera.rot_xz += 1
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -39,8 +39,8 @@ while (ON):
 		elif key[pygame.K_ESCAPE]:
 			ON = False
 
-	draw_shape(cube, camera, screen)
-	# render_sphere(screen, camera, sphere)
+	# draw_shape(cube, camera, screen)
+	render_sphere(screen, camera, 600/(1 + camera.z))
 
 
 	screen.blit(update_fps(clock), (0,0))
