@@ -54,24 +54,12 @@ def draw_faces(object, camera, screen):
 		pygame.draw.polygon(screen, color, points)
 		color = GREEN
 
-def render_sphere(screen, camera, radius):
-	# x, y, z = sphere.center
-
-	# x += camera.x
-	# y += camera.y
-	# z += camera.z	
-	# if z == 0:
-	# 	z = 1
-	# f = 600 / abs(z)
-	# x, y = int(f*x), int(f*y)
-	# if (abs(x) < 2000 and abs(y) < 2000):
-	# 	pygame.draw.circle(screen, WHITE, (center_x + x, center_y + y), 2, 2)
-	
+def render_circle(screen, camera, radius):
 	angle = 0
-	if radius < 1100:
-		nbr_points = int(math.exp(2/math.log(radius)) * 1000)
-	else :
+	if (abs(camera.z) < 0.55):
 		nbr_points = 25000
+	else :
+		nbr_points = int(math.exp(2/abs(camera.z)) * 500)
 	angle_val = (math.pi * 2)/nbr_points
 	drawn_points = 0
 	for i in range(0, nbr_points):
@@ -81,7 +69,4 @@ def render_sphere(screen, camera, radius):
 		y += camera.y * radius
 		if 0 < x < SCREEN_WIDTH and 0 < y < SCREEN_HEIGHT:
 			drawn_points += 1
-			pygame.draw.circle(screen, WHITE, (int(x),int(y)), 0)
-	print(f"nombre de points dessines: \t{drawn_points}")
-	print(f"nombre de points totals:\t{nbr_points}")
-	print(f"focal \t\t\t\t{radius}")
+			pygame.draw.circle(screen, (255, 255, (radius % 255)), (int(x),int(y)), 0)

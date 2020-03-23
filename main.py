@@ -17,7 +17,7 @@ clock = pygame.time.Clock()
 
 "	INIT THE CAMERA (USER's VIEUW) AND SET THE ROTATION		"
 
-camera = Camera((0, 0, 5), (0, 0))
+camera = Camera((0, 0, -5), (0, 0))
 
 "	MAIN ENGINE		"
 
@@ -39,8 +39,8 @@ while (ON):
 		elif key[pygame.K_ESCAPE]:
 			ON = False
 
-	# draw_shape(cube, camera, screen)
-	render_sphere(screen, camera, 600/(1 + camera.z))
+	draw_shape(cube, camera, screen)
+	render_circle(screen, camera, 600/(1 + abs(camera.z)))
 
 
 	screen.blit(update_fps(clock), (0,0))
