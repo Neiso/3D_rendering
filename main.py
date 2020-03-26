@@ -30,8 +30,8 @@ while (ON):
 
 	key = pygame.key.get_pressed()
 	camera.update(0.01, key)
-	# camera.rot_xy += 1
-	# camera.rot_xz += 1
+	camera.rot_xy += 1
+	camera.rot_xz += 1
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:

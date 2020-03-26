@@ -75,4 +75,3 @@ cube_pyramide_2_edges = [(0, 1), (1, 2),(2, 3), (3, 0), (0, 4), (1, 5), (2, 6), 
 sphere_radius = 1
 sphere_center = (0, 0, 1)
 RAD = 0.0174533
-
